@@ -1,13 +1,13 @@
-// BTS Data: 7 Members + 1 Group Card (8 total pairs / 16 cards)
+// BTS Data: Replace example URLs with your own local or hosted image links if desired
 const members = [
-  { name: "RM", role: "Leader / Rapper", icon: "🐨" },
-  { name: "Jin", role: "Vocalist", icon: "🐹" },
-  { name: "Suga", role: "Rapper", icon: "🐱" },
-  { name: "j-hope", role: "Main Dancer / Rapper", icon: "🐿️" },
-  { name: "Jimin", role: "Main Dancer / Vocalist", icon: "🐥" },
-  { name: "V", role: "Vocalist", icon: "🐻" },
-  { name: "Jungkook", role: "Main Vocalist", icon: "🐰" },
-  { name: "BTS", role: "ARMY Forever", icon: "💜" }
+  { name: "RM", role: "Leader / Rapper", image: "images/rm.jpg" },
+  { name: "Jin", role: "Vocalist", image: "images/jin.jpg" },
+  { name: "Suga", role: "Rapper", image: "images/suga.jpg" },
+  { name: "j-hope", role: "Main Dancer / Rapper", image: "images/j-hope.jpg" },
+  { name: "Jimin", role: "Main Dancer / Vocalist", image: "images/jimin.jpg" },
+  { name: "V", role: "Vocalist", image: "images/v.jpg" },
+  { name: "Jungkook", role: "Main Vocalist", image: "images/jungkook.jpg" },
+  { name: "BTS", role: "ARMY Forever", image: "images/bts.jpg" }
 ];
 
 let cards = [];
@@ -32,11 +32,11 @@ function initGame() {
   movesDisplay.innerText = moves;
   matchesDisplay.innerText = matches;
 
-  // Duplicate array to make pairs and shuffle (Fisher-Yates)
+  // Duplicate array to make 8 pairs (16 cards total) and shuffle
   cards = [...members, ...members];
   shuffle(cards);
 
-  // Generate HTML elements dynamically
+  // Generate HTML cards dynamically
   cards.forEach((member, index) => {
     const cardElement = document.createElement('div');
     cardElement.classList.add('card');
@@ -47,7 +47,7 @@ function initGame() {
       <div class="card-inner">
         <div class="card-back">⟭⟬</div>
         <div class="card-front">
-          <div class="avatar">${member.icon}</div>
+          <img src="${member.image}" alt="${member.name}" class="avatar-img">
           <div class="name">${member.name}</div>
           <div class="role">${member.role}</div>
         </div>
@@ -67,7 +67,7 @@ function shuffle(array) {
   }
 }
 
-// Card Flip Event Handler
+// Card Flip Handler
 function flipCard() {
   if (lockBoard) return;
   if (this.classList.contains('flipped') || this.classList.contains('matched')) return;
@@ -99,7 +99,6 @@ function checkMatch() {
     }
   } else {
     lockBoard = true;
-    // Delay before un-flipping unmatched cards
     setTimeout(() => {
       card1.classList.remove('flipped');
       card2.classList.remove('flipped');
