@@ -1,0 +1,140 @@
+:root {
+  --bts-purple: #a174da;
+  --bts-dark: #120e18;
+  --bts-light: #2a2238;
+  --card-back: #3a2e4e;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bts-dark);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--bts-purple);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.stats {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #d8c3f7;
+}
+
+/* Board Grid Setup */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 520px;
+  perspective: 1000px; /* Essential for 3D flip depth */
+}
+
+/* Individual Card Container */
+.card {
+  aspect-ratio: 3 / 4;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* 3D Flip Inner Wrapper */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* State Classes Applied via JavaScript */
+.card.flipped .card-inner,
+.card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bts-purple);
+  box-sizing: border-box;
+}
+
+/* Card Back (Default Visible Face) */
+.card-back {
+  background: linear-gradient(135deg, var(--bts-light), var(--card-back));
+  color: var(--bts-purple);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Card Front (Revealed Member Face) */
+.card-front {
+  background-color: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+  padding: 10px;
+}
+
+.card-front .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--bts-purple);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.card-front .name {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.card-front .role {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 10px 24px;
+  background-color: var(--bts-purple);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background-color: #8c58ce;
+  transform: translateY(-2px);
+}
