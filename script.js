@@ -3,7 +3,7 @@ const members = [
   { name: "RM", role: "Leader / Rapper", image: "images/rm.jpg" },
   { name: "Jin", role: "Vocalist", image: "images/jin.jpg" },
   { name: "Suga", role: "Rapper", image: "images/suga.jpg" },
-  { name: "j-hope", role: "Main Dancer / Rapper", image: "images/j-hope.jpg" },
+  { name: "j-hope", role: "Main Dancer / Rapper", image: "images/jhope.jpg" },
   { name: "Jimin", role: "Main Dancer / Vocalist", image: "images/jimin.jpg" },
   { name: "V", role: "Vocalist", image: "images/v.jpg" },
   { name: "Jungkook", role: "Main Vocalist", image: "images/jungkook.jpg" },
